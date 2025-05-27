@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@3.0.0/dist/web3.min.js"></script>
+    <script src="./auction_v2.js"></script>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 20px;
+      }
+      .box {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 10px 0;
+      }
+      button {
+        padding: 10px;
+        margin: 5px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      input {
+        padding: 8px;
+        margin: 5px;
+      }
+      .status {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <h1>🚗 자동차 경매</h1>
+
+    <!-- 차량 정보 -->
+    <div class="box">
+      <h3>차량 정보</h3>
+      브랜드: <span id="car_brand">로딩중...</span><br />
+      번호: <span id="registration_number">로딩중...</span>
+    </div>
+
+    <!-- 입찰하기 -->
+    <div class="box">
+      <h3>입찰하기</h3>
+      금액 (ETH):
+      <input type="text" id="value" value="1" placeholder="예: 10" />
+      <button onclick="bid()">입찰!</button>
+      <div id="biding_status" class="status">입찰 준비 완료</div>
+    </div>
+
+    <!-- 경매 정보 -->
+    <div class="box">
+      <h3>경매 정보</h3>
+      <strong>내 계정:</strong> <span id="current_account">로딩중...</span
+      ><br />
+      <strong>내 잔액:</strong>
+      <span id="account_balance">로딩중...</span> ETH<br /><br />
+
+      <strong>경매 종료:</strong> <span id="auction_end">로딩중...</span><br />
+      <strong>최고 입찰:</strong>
+      <span id="HighestBid">로딩중...</span> ETH<br />
+      <strong>최고 입찰자:</strong> <span id="HighestBidder">로딩중...</span
+      ><br />
+      <strong>내 입찰:</strong> <span id="MyBid">로딩중...</span> ETH<br />
+      <strong>경매 상태:</strong> <span id="STATE">로딩중...</span>
+    </div>
+
+    <!-- 관리 기능 -->
+    <div class="box">
+      <h3>관리 기능</h3>
+      <button onclick="cancel_auction()">경매 취소</button>
+      <button onclick="withdraw()">출금하기</button>
+      <button onclick="withdrawWinningBid()">낙찰금 출금</button>
+      <div id="withdraw_status" class="status">관리 기능 준비 완료</div>
+    </div>
+  </body>
+</html>
